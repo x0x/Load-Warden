@@ -1,0 +1,5 @@
+[
+    { "host": "localhost", "port": 8001, "isHealthy": true },
+    { "host": "localhost", "port": 8002, "isHealthy": true },
+    { "host": "localhost", "port": 8003, "isHealthy": true }
+]

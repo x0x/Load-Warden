@@ -3,15 +3,25 @@ const http = require("http");
 const port = 8000;
 const app = express();
 
-const servers = require("./server/server.json");
+const servers = require("../backend-servers/server.json");
+const { periodicHealthCheck } = require("./modules/healthCheck");
+const { selectServer } = require("./modules/roundRobin");
 
-let currentServer = 0;
+// default health check period to 10 seconds
+const healthCheckPeriod = process.argv[2] || 1000;
+
+setInterval(() => {
+    periodicHealthCheck(servers, healthCheckPeriod);
+}, healthCheckPeriod);
 
 app.get('/', async(req, res) => {
 
-    // Round-robin load balancing
-    const selectedServer = servers[currentServer];
-    currentServer = (currentServer + 1) % servers.length;
+    const selectedServer = selectServer(servers);
+
+    if (!selectedServer) {
+        res.status(500).send('No server available');
+        return;
+    }
 
     const options = {
         hostname: selectedServer.host,
