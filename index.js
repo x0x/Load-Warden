@@ -1,9 +1,9 @@
 const express = require("express");
 const http = require("http");
-const port = 3000;
+const port = 8000;
 const app = express();
 
-const servers = require('./server.json');
+const servers = require("./server/server.json");
 
 let currentServer = 0;
 
