@@ -4,7 +4,7 @@ const app = express();
 const port = 8001;
 
 app.get('/', (req, res) => {
-    res.send(`Hello From Server 1 running at http://localhost:${ port }`);
+    res.send(`Hello From Server 1 running at http://localhost:${ port }\n`);
 });
 
 app.listen(port, () => {
