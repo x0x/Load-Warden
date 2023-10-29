@@ -83,5 +83,6 @@ Execute the following command to initiate the tests:
 
 Feel free to adjust the --parallel-max option to control the level of parallelism to suit your testing needs.
 
+## Acknowledgements
 
-
+ - [Coding Challenges By John Crickett](https://codingchallenges.fyi/challenges/challenge-load-balancer)
